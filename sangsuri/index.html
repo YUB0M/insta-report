@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#3B0A10">
+<title>상수리 굿즈 체크리스트 · 11.19 더현대</title>
+<style>
+  :root{
+    --wine:#3B0A10;
+    --wine2:#57141B;
+    --cream:#F7EFE4;
+    --paper:#FFFDF9;
+    --line:#E4D6C3;
+    --gold:#B08A4A;
+    --ink:#2A1613;
+    --sub:#8A7268;
+    --ok:#2E6B4F;
+  }
+  *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+  html,body{margin:0;padding:0}
+  body{
+    background:var(--cream);
+    color:var(--ink);
+    font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;
+    font-size:15px;
+    line-height:1.4;
+    padding-bottom:148px;
+  }
+  .wrap{max-width:430px;margin:0 auto;}
+
+  header{
+    background:linear-gradient(160deg,#3B0A10 0%,#57141B 60%,#3B0A10 100%);
+    color:#F4E7D6;
+    padding:18px 16px 16px;
+    border-bottom:3px solid var(--gold);
+  }
+  header .brand{
+    font-family:"Nanum Myeongjo","Apple SD Gothic Neo",serif;
+    font-size:11px;letter-spacing:.22em;color:#C9A96E;text-transform:uppercase;margin-bottom:8px;
+  }
+  header h1{
+    font-family:"Nanum Myeongjo","Apple SD Gothic Neo",serif;
+    font-size:20px;line-height:1.3;margin:0 0 8px;font-weight:700;letter-spacing:-.01em;
+  }
+  header h1 em{font-style:normal;color:#E3C88F}
+  header .where{font-size:12.5px;color:#DCC7AE}
+  header .where b{color:#F4E7D6;font-weight:600}
+  header .plan{
+    margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;
+    font-size:12px;color:#EBDCC8;
+  }
+  header .plan span{
+    background:rgba(255,255,255,.1);border:1px solid rgba(227,200,143,.35);
+    border-radius:999px;padding:4px 10px;
+  }
+  header .plan span b{color:#F2D9A0}
+
+  .toolbar{
+    position:sticky;top:0;z-index:20;
+    display:flex;align-items:center;gap:8px;
+    padding:10px 14px;background:rgba(247,239,228,.96);
+    backdrop-filter:saturate(180%) blur(8px);
+    border-bottom:1px solid var(--line);
+  }
+  .toolbar button{
+    font:inherit;font-size:13px;font-weight:600;
+    padding:8px 13px;border-radius:999px;cursor:pointer;
+    border:1px solid var(--wine);background:var(--wine);color:#F7EFE4;
+  }
+  .toolbar button.ghost{background:transparent;color:var(--wine);border-color:#D9C4A9}
+  .toolbar .count{margin-left:auto;font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
+  .toolbar .count b{color:var(--wine);font-size:14px}
+
+  .sec{padding:16px 14px 4px}
+  .sec h2{
+    font-family:"Nanum Myeongjo",serif;
+    font-size:14px;margin:0 0 10px;color:var(--wine);
+    display:flex;align-items:baseline;gap:8px;
+  }
+  .sec h2 small{font-family:inherit;font-size:11.5px;color:var(--sub);font-weight:400;letter-spacing:0}
+
+  ul.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+
+  li.row{
+    display:grid;
+    grid-template-columns:22px 66px 1fr auto;
+    align-items:center;gap:10px;
+    background:var(--paper);
+    border:1px solid var(--line);
+    border-radius:14px;
+    padding:10px 10px 10px 8px;
+    transition:border-color .15s, box-shadow .15s, background .15s;
+  }
+  li.row.on{border-color:#C9A96E;box-shadow:0 2px 10px rgba(59,10,16,.08);background:#FFFCF6}
+
+  .cb{
+    appearance:none;-webkit-appearance:none;
+    width:22px;height:22px;margin:0;border-radius:7px;
+    border:2px solid #C9B49B;background:#fff;cursor:pointer;
+    position:relative;flex:none;
+  }
+  .cb:checked{background:var(--wine);border-color:var(--wine)}
+  .cb:checked::after{
+    content:"";position:absolute;left:6px;top:2.5px;
+    width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;
+    transform:rotate(42deg);
+  }
+
+  .thumb{
+    width:66px;height:66px;border-radius:10px;overflow:hidden;flex:none;
+    background:#fff;border:1px solid #EFE3D3;
+    display:flex;align-items:center;justify-content:center;
+  }
+  .thumb img{width:100%;height:100%;object-fit:contain;display:block}
+
+  .info{min-width:0}
+  .name{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.32}
+  .meta{font-size:11.5px;color:var(--sub);margin-top:3px;line-height:1.35}
+  .meta .tag{
+    display:inline-block;margin-right:4px;padding:1px 6px;border-radius:5px;
+    background:#F3E4D2;color:#8C5A2B;font-size:10.5px;font-weight:700;vertical-align:1px;
+  }
+  .price{font-size:12.5px;color:var(--wine);font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums}
+  .price.free{color:var(--ok)}
+  .price .each{color:var(--sub);font-weight:600;margin-left:4px;font-size:11px}
+
+  .qty{display:none;align-items:center;gap:0;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+  li.row.on .qty{display:flex}
+  .qty button{
+    width:30px;height:30px;border:0;background:#fff;color:var(--wine);
+    font-size:17px;line-height:1;font-weight:600;cursor:pointer;padding:0;
+  }
+  .qty button:disabled{color:#CDBDAF}
+  .qty .n{min-width:20px;text-align:center;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+
+  details.more{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:#FBF5EB;overflow:hidden}
+  details.more summary{
+    list-style:none;cursor:pointer;padding:13px 14px;font-size:13.5px;font-weight:700;color:var(--wine);
+    display:flex;align-items:center;gap:8px;
+  }
+  details.more summary::-webkit-details-marker{display:none}
+  details.more summary .arrow{margin-left:auto;transition:transform .2s;color:var(--gold)}
+  details.more[open] summary .arrow{transform:rotate(180deg)}
+  details.more .inner{padding:0 10px 12px}
+  details.more .hintline{font-size:11.5px;color:var(--sub);padding:0 4px 8px}
+
+  .note{
+    margin:18px 14px 0;padding:12px 14px;border-radius:12px;
+    background:#F2E7D7;color:#6F5343;font-size:11.5px;line-height:1.55;
+  }
+  .note b{color:var(--wine)}
+  footer{text-align:center;font-size:11px;color:#A4907F;padding:18px 0 8px}
+
+  /* sticky bottom bar */
+  .bar{
+    position:fixed;left:0;right:0;bottom:0;z-index:30;
+    background:linear-gradient(180deg,#3B0A10 0%,#2C060B 100%);
+    color:#F6EADA;
+    border-top:2px solid var(--gold);
+    padding:9px 14px calc(10px + env(safe-area-inset-bottom));
+    box-shadow:0 -6px 22px rgba(59,10,16,.28);
+  }
+  .bar .inner{max-width:430px;margin:0 auto}
+  .pills{display:flex;gap:6px;margin-bottom:7px}
+  .pill{
+    flex:1;text-align:center;font-size:10.5px;font-weight:700;letter-spacing:-.01em;
+    padding:4px 2px;border-radius:8px;
+    border:1px solid rgba(227,200,143,.28);color:#B9A38C;background:rgba(255,255,255,.04);
+    white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
+  }
+  .pill.on{
+    background:linear-gradient(180deg,#8E6B2C,#6E4F1C);border-color:#D8B570;color:#FFF3DC;
+  }
+  .pill.on::after{content:" ✓"}
+  .totals{display:flex;align-items:baseline;gap:8px}
+  .totals .cnt{font-size:12px;color:#C9B49B;white-space:nowrap}
+  .totals .label{font-size:12px;color:#C9B49B}
+  .totals .sum{
+    margin-left:auto;font-size:23px;font-weight:800;letter-spacing:-.02em;
+    font-variant-numeric:tabular-nums;color:#FFF6E6;
+  }
+  .totals .sum small{font-size:13px;font-weight:700;margin-left:1px;color:#E9CFA3}
+  .hint{margin-top:4px;font-size:11px;color:#B59E88;font-variant-numeric:tabular-nums}
+  .hint b{color:#E7C88E}
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <header>
+    <div class="brand">Under One Canopy, Two Romances</div>
+    <h1>상수리나무 아래 <em>×</em> 잊혀진 들판</h1>
+    <div class="where"><b>11.19(목) 16:30</b> · 13회차 · 더현대서울 5F 에픽서울</div>
+    <div class="plan">
+      <span>구매 예정 11종 <b>500,400원</b></span>
+      <span>예약번호 1407658417</span>
+    </div>
+  </header>
+
+  <div class="toolbar">
+    <button id="all" type="button">전체 선택</button>
+    <button id="reset" class="ghost" type="button">초기화</button>
+    <div class="count"><b id="cnt">0</b> / <span id="cntAll">15</span>종</div>
+  </div>
+
+  <div class="sec">
+    <h2>살 품목 <small>11종 · 500,400원</small></h2>
+    <ul class="list" id="mainList"></ul>
+
+    <details class="more" id="more">
+      <summary>추가 MD 4종 <span class="arrow">▾</span></summary>
+      <div class="inner">
+        <div class="hintline">같이 볼 만한 품목 — 체크하면 합계에 더해져요.</div>
+        <ul class="list" id="extraList"></ul>
+      </div>
+    </details>
+
+    <div class="note">
+      <b>현장 메모</b><br>
+      · 엽서류만 사면 외전 미니북 사은품 조건에서 빠져요.<br>
+      · 목걸이 2종은 일별 한정·인당 최대 2개, 그 외 품목은 옵션당 최대 10개.<br>
+      · 검 금속 젤펜·리프탄&amp;맥시 액자 배지·바르카스&amp;탈리아 액자 배지는 2주차부터 판매.<br>
+      · 포토이즘은 카드 결제만 됩니다.
+    </div>
+
+    <footer>2026.11.19 · 유봄 님 현장용 체크리스트 · v1</footer>
+  </div>
+</div>
+
+<div class="bar">
+  <div class="inner">
+    <div class="pills">
+      <div class="pill" id="pillBook">외전 미니북</div>
+      <div class="pill" id="pill50">5만 사은품</div>
+      <div class="pill" id="pill150">15만 사은품</div>
+    </div>
+    <div class="totals">
+      <span class="cnt"><b id="cnt2">0</b>종 선택</span>
+      <span class="label">합계</span>
+      <span class="sum"><span id="sum">0</span><small>원</small></span>
+    </div>
+    <div class="hint" id="hint"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  var IMG = "img/";
+  var items = [
+    {id:"books",   name:"잊혀진 들판 단행본 1·2·3권", price:48000, meta:"각 16,000원 × 3권", tag:"단행본", img:"books.jpg", group:"main"},
+    {id:"minibook",name:"특별 외전 미니북 3권", price:0, meta:"사전예약 + MD 1종 이상 구매 시 전권 증정", tag:"사은품", img:"minibook.jpg", group:"main"},
+    {id:"goblet",  name:"고블릿잔", price:59900, meta:"69×130mm · 상수리나무 아래", img:"goblet.jpg", group:"main"},
+    {id:"comb",    name:"맥시밀리언 머리빗 세트", price:24900, meta:"120×52mm · 파우치 포함", img:"comb.jpg", group:"main"},
+    {id:"necklace_oak", name:"상수리나무 아래 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", img:"necklace_oak.jpg", group:"main"},
+    {id:"diffuser",name:"전시 시그니처 디퓨저", price:18000, meta:"50mL", img:"diffuser.jpg", group:"main"},
+    {id:"map",     name:"로비텐 세계관 맵", price:29900, meta:"1124.8×190mm", img:"map.jpg", group:"main"},
+    {id:"jewelbox",name:"탈리아 보석함", price:75900, meta:"188×132×85mm · 로엠 기사단 단추 증정", img:"jewelbox.jpg", group:"main"},
+    {id:"squeezer",name:"로엠 기사단 단추 스퀴저", price:8000, meta:"25×80mm · 파우치 포함", img:"squeezer.jpg", group:"main"},
+    {id:"diary",   name:"탈리아 일기장", price:23900, meta:"138×183mm", img:"diary.jpg", group:"main"},
+    {id:"khan",    name:"아기 칸 봉제 인형 키링", price:22900, meta:"80×110mm", img:"khan.jpg", group:"main"},
+
+    {id:"necklace_field", name:"잊혀진 들판 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", img:"necklace_field.jpg", group:"extra"},
+    {id:"calendar",name:"탁상 달력 2027", price:22900, meta:"명대사 일러스트 12장 + 인물 공식 생일 표기", img:"calendar.jpg", group:"extra"},
+    {id:"postcards",name:"일러스트 엽서 1·2·3권", price:5500, meta:"각 5,500원 · 엽서류는 외전 사은품 조건 제외", img:"postcards.jpg", group:"extra"},
+    {id:"bag",     name:"전시 쇼핑백", price:1000, meta:"315×400×120mm", img:"bag.jpg", group:"extra"}
+  ];
+
+  var KEY = "sangsuri-checklist-2026-11-19-v1";
+  var state = {};
+  try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }
+
+  function won(n){ return n.toLocaleString("ko-KR"); }
+  function byId(id){ return document.getElementById(id); }
+  var MAX = 10;
+
+  function rowHTML(it){
+    var q = state[it.id] || 0;
+    var checked = q > 0;
+    var priceLine = it.price === 0
+      ? '<div class="price free">0원</div>'
+      : '<div class="price">' + won(it.price) + '원</div>';
+    return '' +
+      '<li class="row' + (checked ? ' on' : '') + '" data-id="' + it.id + '">' +
+        '<input class="cb" type="checkbox" id="cb-' + it.id + '"' + (checked ? ' checked' : '') + ' aria-label="' + it.name + '">' +
+        '<label class="thumb" for="cb-' + it.id + '">' +
+          '<img src="' + IMG + it.img + '" alt="' + it.name + ' 공식 굿즈 이미지" loading="lazy">' +
+        '</label>' +
+        '<div class="info">' +
+          '<div class="name">' + it.name + '</div>' +
+          '<div class="meta">' + (it.tag ? '<span class="tag">' + it.tag + '</span>' : '') + it.meta + '</div>' +
+          priceLine +
+        '</div>' +
+        '<div class="qty">' +
+          '<button type="button" data-act="dec">−</button>' +
+          '<span class="n">' + (q || 1) + '</span>' +
+          '<button type="button" data-act="inc">＋</button>' +
+        '</div>' +
+      '</li>';
+  }
+
+  var main = items.filter(function(i){return i.group==="main";});
+  var extra = items.filter(function(i){return i.group==="extra";});
+  byId("mainList").innerHTML = main.map(rowHTML).join("");
+  byId("extraList").innerHTML = extra.map(rowHTML).join("");
+  byId("cntAll").textContent = items.length;
+
+  function total(){
+    var sum = 0, n = 0;
+    items.forEach(function(it){
+      var q = state[it.id] || 0;
+      if(q > 0){ sum += it.price * q; n++; }
+    });
+    return {sum: sum, n: n};
+  }
+
+  function save(){
+    try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
+  }
+
+  function render(){
+    var sum = 0, n = 0;
+    items.forEach(function(it){
+      var q = state[it.id] || 0;
+      var li = document.querySelector('li.row[data-id="' + it.id + '"]');
+      if(!li) return;
+      var cb = li.querySelector(".cb");
+      cb.checked = q > 0;
+      li.classList.toggle("on", q > 0);
+      li.querySelector(".qty .n").textContent = q || 1;
+      li.querySelector('[data-act="dec"]').disabled = (q <= 1);
+      li.querySelector('[data-act="inc"]').disabled = (q >= MAX);
+      if(q > 0){ sum += it.price * q; n++; }
+    });
+
+    byId("sum").textContent = won(sum);
+    byId("cnt").textContent = n;
+    byId("cnt2").textContent = n;
+
+    // 사은품 조건: 엽서류·미니북 제외 MD 1종 이상
+    var hasMd = items.some(function(it){
+      return (state[it.id] || 0) > 0 && it.id !== "minibook" && it.id !== "postcards";
+    });
+    byId("pillBook").classList.toggle("on", hasMd);
+    byId("pill50").classList.toggle("on", sum >= 50000);
+    byId("pill150").classList.toggle("on", sum >= 150000);
+
+    var hint;
+    if(sum >= 150000){
+      hint = "15만원 사은품 달성 — 포스터·PVC 책갈피·카카오페이지 1만원권";
+    } else if(sum >= 50000){
+      hint = "5만원 사은품 달성 · 15만원까지 <b>" + won(150000 - sum) + "원</b> 남음";
+    } else {
+      hint = "5만원까지 <b>" + won(50000 - sum) + "원</b> 남음";
+    }
+    if(!hasMd){ hint += " · 외전 미니북은 엽서 외 MD 1종 필요"; }
+    byId("hint").innerHTML = hint;
+
+    save();
+  }
+
+  document.addEventListener("change", function(e){
+    var cb = e.target.closest(".cb");
+    if(!cb) return;
+    var li = cb.closest("li.row");
+    var id = li.getAttribute("data-id");
+    if(cb.checked){ state[id] = state[id] || 1; }
+    else { delete state[id]; }
+    render();
+  });
+
+  document.addEventListener("click", function(e){
+    // 이름·설명 영역을 눌러도 체크되도록
+    var info = e.target.closest("li.row .info");
+    if(info){
+      var row = info.closest("li.row");
+      var box = row.querySelector(".cb");
+      box.checked = !box.checked;
+      box.dispatchEvent(new Event("change", {bubbles:true}));
+      return;
+    }
+    var btn = e.target.closest(".qty button");
+    if(!btn) return;
+    e.preventDefault(); e.stopPropagation();
+    var li = btn.closest("li.row");
+    var id = li.getAttribute("data-id");
+    var q = state[id] || 0;
+    if(btn.getAttribute("data-act") === "inc"){ state[id] = Math.min(MAX, q + 1); }
+    else { state[id] = Math.max(1, q - 1); }
+    render();
+  });
+
+  byId("all").addEventListener("click", function(){
+    var allOn = items.every(function(it){ return (state[it.id] || 0) > 0; });
+    if(allOn){ state = {}; }
+    else { items.forEach(function(it){ state[it.id] = state[it.id] || 1; }); }
+    render();
+  });
+
+  byId("reset").addEventListener("click", function(){
+    state = {};
+    render();
+  });
+
+  render();
+})();
+</script>
+</body>
+</html>
