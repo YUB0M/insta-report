@@ -347,6 +347,12 @@
     byId("pill150").classList.toggle("on", sum >= 150000);
 
     var hint;
+    if(sum === 0){
+      hint = "항목을 체크하면 합계와 사은품 달성 여부가 바로 계산돼요";
+      byId("hint").innerHTML = hint;
+      save();
+      return;
+    }
     if(sum >= 150000){
       hint = "15만원 사은품 달성 — 포스터·PVC 책갈피·카카오페이지 1만원권";
     } else if(sum >= 50000){
