@@ -84,12 +84,12 @@
 
   li.row{
     display:grid;
-    grid-template-columns:22px 66px 1fr auto;
-    align-items:center;gap:10px;
+    grid-template-columns:20px 58px 1fr auto;
+    align-items:center;gap:8px;
     background:var(--paper);
     border:1px solid var(--line);
     border-radius:14px;
-    padding:10px 10px 10px 8px;
+    padding:9px 8px 9px 7px;
     transition:border-color .15s, box-shadow .15s, background .15s;
   }
   li.row.on{border-color:#C9A96E;box-shadow:0 2px 10px rgba(59,10,16,.08);background:#FFFCF6}
@@ -108,15 +108,15 @@
   }
 
   .thumb{
-    width:66px;height:66px;border-radius:10px;overflow:hidden;flex:none;
+    width:58px;height:58px;border-radius:9px;overflow:hidden;flex:none;
     background:#fff;border:1px solid #EFE3D3;
     display:flex;align-items:center;justify-content:center;
   }
   .thumb img{width:100%;height:100%;object-fit:contain;display:block}
 
   .info{min-width:0}
-  .name{font-size:14px;font-weight:700;letter-spacing:-.01em;line-height:1.32}
-  .meta{font-size:11.5px;color:var(--sub);margin-top:3px;line-height:1.35}
+  .name{font-size:13.5px;font-weight:700;letter-spacing:-.01em;line-height:1.32}
+  .meta{font-size:11px;color:var(--sub);margin-top:2px;line-height:1.32}
   .meta .tag{
     display:inline-block;margin-right:4px;padding:1px 6px;border-radius:5px;
     background:#F3E4D2;color:#8C5A2B;font-size:10.5px;font-weight:700;vertical-align:1px;
@@ -128,11 +128,11 @@
   .qty{display:none;align-items:center;gap:0;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
   li.row.on .qty{display:flex}
   .qty button{
-    width:30px;height:30px;border:0;background:#fff;color:var(--wine);
-    font-size:17px;line-height:1;font-weight:600;cursor:pointer;padding:0;
+    width:26px;height:28px;border:0;background:#fff;color:var(--wine);
+    font-size:16px;line-height:1;font-weight:600;cursor:pointer;padding:0;
   }
   .qty button:disabled{color:#CDBDAF}
-  .qty .n{min-width:20px;text-align:center;font-size:13px;font-weight:700;font-variant-numeric:tabular-nums}
+  .qty .n{min-width:16px;text-align:center;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums}
 
   details.more{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:#FBF5EB;overflow:hidden}
   details.more summary{
@@ -248,21 +248,21 @@
 (function(){
   var IMG = "img/";
   var items = [
-    {id:"books",   name:"잊혀진 들판 단행본 1·2·3권", price:48000, meta:"각 16,000원 × 3권", tag:"단행본", img:"books.jpg", group:"main"},
-    {id:"minibook",name:"특별 외전 미니북 3권", price:0, meta:"사전예약 + MD 1종 이상 구매 시 전권 증정", tag:"사은품", img:"minibook.jpg", group:"main"},
-    {id:"goblet",  name:"고블릿잔", price:59900, meta:"69×130mm · 상수리나무 아래", img:"goblet.jpg", group:"main"},
+    {id:"books",   name:"잊혀진 들판 단행본 1·2·3권", price:48000, meta:"각 16,000원 × 3", tag:"단행본", img:"books.jpg", group:"main"},
+    {id:"minibook",name:"특별 외전 미니북 3권", price:0, meta:"사전예약 + MD 1종↑ 구매 시 전권", tag:"사은품", img:"minibook.jpg", group:"main"},
+    {id:"goblet",  name:"고블릿잔", price:59900, meta:"69×130mm", img:"goblet.jpg", group:"main"},
     {id:"comb",    name:"맥시밀리언 머리빗 세트", price:24900, meta:"120×52mm · 파우치 포함", img:"comb.jpg", group:"main"},
     {id:"necklace_oak", name:"상수리나무 아래 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", img:"necklace_oak.jpg", group:"main"},
     {id:"diffuser",name:"전시 시그니처 디퓨저", price:18000, meta:"50mL", img:"diffuser.jpg", group:"main"},
     {id:"map",     name:"로비텐 세계관 맵", price:29900, meta:"1124.8×190mm", img:"map.jpg", group:"main"},
-    {id:"jewelbox",name:"탈리아 보석함", price:75900, meta:"188×132×85mm · 로엠 기사단 단추 증정", img:"jewelbox.jpg", group:"main"},
-    {id:"squeezer",name:"로엠 기사단 단추 스퀴저", price:8000, meta:"25×80mm · 파우치 포함", img:"squeezer.jpg", group:"main"},
+    {id:"jewelbox",name:"탈리아 보석함", price:75900, meta:"188×132×85mm · 단추 증정", img:"jewelbox.jpg", group:"main"},
+    {id:"squeezer",name:"로엠 기사단 단추 스퀴저", price:8000, meta:"파우치 포함", img:"squeezer.jpg", group:"main"},
     {id:"diary",   name:"탈리아 일기장", price:23900, meta:"138×183mm", img:"diary.jpg", group:"main"},
     {id:"khan",    name:"아기 칸 봉제 인형 키링", price:22900, meta:"80×110mm", img:"khan.jpg", group:"main"},
 
     {id:"necklace_field", name:"잊혀진 들판 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", img:"necklace_field.jpg", group:"extra"},
-    {id:"calendar",name:"탁상 달력 2027", price:22900, meta:"명대사 일러스트 12장 + 인물 공식 생일 표기", img:"calendar.jpg", group:"extra"},
-    {id:"postcards",name:"일러스트 엽서 1·2·3권", price:5500, meta:"각 5,500원 · 엽서류는 외전 사은품 조건 제외", img:"postcards.jpg", group:"extra"},
+    {id:"calendar",name:"탁상 달력 2027", price:22900, meta:"명대사 일러스트 12장 + 생일 표기", img:"calendar.jpg", group:"extra"},
+    {id:"postcards",name:"일러스트 엽서 1·2·3권", price:5500, meta:"각 5,500원 · 엽서류는 사은품 제외", img:"postcards.jpg", group:"extra"},
     {id:"bag",     name:"전시 쇼핑백", price:1000, meta:"315×400×120mm", img:"bag.jpg", group:"extra"}
   ];
 
@@ -303,7 +303,7 @@
   var extra = items.filter(function(i){return i.group==="extra";});
   byId("mainList").innerHTML = main.map(rowHTML).join("");
   byId("extraList").innerHTML = extra.map(rowHTML).join("");
-  byId("cntAll").textContent = items.length;
+  byId("cntAll").textContent = main.length;
 
   function total(){
     var sum = 0, n = 0;
@@ -333,8 +333,9 @@
       if(q > 0){ sum += it.price * q; n++; }
     });
 
+    var nMain = main.filter(function(it){ return (state[it.id] || 0) > 0; }).length;
     byId("sum").textContent = won(sum);
-    byId("cnt").textContent = n;
+    byId("cnt").textContent = nMain;
     byId("cnt2").textContent = n;
 
     // 사은품 조건: 엽서류·미니북 제외 MD 1종 이상
