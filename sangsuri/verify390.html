@@ -1,10 +1,17 @@
 <!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
 <title>390 view</title>
-<style>body{margin:0;background:#1b1b1b;display:flex;justify-content:center;padding:16px 0}
-iframe{width:390px;border:0;background:#fff;border-radius:8px}</style></head>
+<style>html,body{margin:0;height:100%}body{background:#1b1b1b;display:flex;justify-content:center}
+iframe{width:390px;border:0;background:#fff}</style></head>
 <body><iframe id="f" width="390" height="844" src="./index.html"></iframe>
 <script>
-var p=new URLSearchParams(location.search), h=+(p.get('h')||844), f=document.getElementById('f');
+var p=new URLSearchParams(location.search), h=+(p.get('h')||844), y=+(p.get('y')||0), f=document.getElementById('f');
 f.style.height=h+'px';
+f.addEventListener('load',function(){
+  f.src='./index.html?t='+Date.now();
+});
 f.src='./index.html?t='+Date.now();
+var tries=0, iv=setInterval(function(){
+  try{ f.contentWindow.scrollTo(0,y); }catch(e){}
+  if(++tries>12) clearInterval(iv);
+},250);
 </script></body></html>
