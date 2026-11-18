@@ -13,9 +13,11 @@
     --paper:#FFFDF9;
     --line:#E4D6C3;
     --gold:#B08A4A;
+    --gold2:#D8B570;
     --ink:#2A1613;
     --sub:#8A7268;
     --ok:#2E6B4F;
+    --soon:#4A5A6B;
   }
   *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
   html,body{margin:0;padding:0}
@@ -25,18 +27,17 @@
     font-family:-apple-system,BlinkMacSystemFont,"Apple SD Gothic Neo","Pretendard","Noto Sans KR","Malgun Gothic",sans-serif;
     font-size:15px;
     line-height:1.4;
-    padding-bottom:148px;
+    padding-bottom:152px;
   }
   .wrap{max-width:430px;margin:0 auto;}
 
   header{
     background:linear-gradient(160deg,#3B0A10 0%,#57141B 60%,#3B0A10 100%);
     color:#F4E7D6;
-    padding:18px 16px 16px;
+    padding:18px 16px 15px;
     border-bottom:3px solid var(--gold);
   }
   header .brand{
-    font-family:"Nanum Myeongjo","Apple SD Gothic Neo",serif;
     font-size:11px;letter-spacing:.22em;color:#C9A96E;text-transform:uppercase;margin-bottom:8px;
   }
   header h1{
@@ -46,142 +47,146 @@
   header h1 em{font-style:normal;color:#E3C88F}
   header .where{font-size:12.5px;color:#DCC7AE}
   header .where b{color:#F4E7D6;font-weight:600}
-  header .plan{
-    margin-top:12px;display:flex;gap:8px;flex-wrap:wrap;
-    font-size:12px;color:#EBDCC8;
-  }
+  header .plan{margin-top:11px;display:flex;gap:6px;flex-wrap:wrap;font-size:11.5px;color:#EBDCC8}
   header .plan span{
-    background:rgba(255,255,255,.1);border:1px solid rgba(227,200,143,.35);
-    border-radius:999px;padding:4px 10px;
+    background:rgba(255,255,255,.09);border:1px solid rgba(227,200,143,.35);
+    border-radius:999px;padding:4px 9px;
   }
   header .plan span b{color:#F2D9A0}
+  header .plan span.star{border-color:#E3C88F;background:rgba(216,181,112,.18)}
 
   .toolbar{
     position:sticky;top:0;z-index:20;
-    display:flex;align-items:center;gap:8px;
-    padding:10px 14px;background:rgba(247,239,228,.96);
+    padding:9px 12px 8px;background:rgba(247,239,228,.97);
     backdrop-filter:saturate(180%) blur(8px);
     border-bottom:1px solid var(--line);
   }
-  .toolbar button{
-    font:inherit;font-size:13px;font-weight:600;
-    padding:8px 13px;border-radius:999px;cursor:pointer;
-    border:1px solid var(--wine);background:var(--wine);color:#F7EFE4;
+  .seg{display:flex;gap:5px;background:#EADFCE;border-radius:11px;padding:3px}
+  .seg button{
+    flex:1;font:inherit;font-size:12.5px;font-weight:700;
+    padding:7px 2px;border:0;border-radius:9px;background:transparent;color:#7A6154;cursor:pointer;
+    white-space:nowrap;
   }
-  .toolbar button.ghost{background:transparent;color:var(--wine);border-color:#D9C4A9}
-  .toolbar .count{margin-left:auto;font-size:12.5px;color:var(--sub);font-variant-numeric:tabular-nums}
-  .toolbar .count b{color:var(--wine);font-size:14px}
+  .seg button.on{background:var(--wine);color:#FFF3DC;box-shadow:0 1px 4px rgba(59,10,16,.18)}
+  .tools{display:flex;align-items:center;gap:6px;margin-top:7px}
+  .tools button{
+    font:inherit;font-size:12px;font-weight:700;
+    padding:6px 11px;border-radius:999px;cursor:pointer;
+    border:1px solid #D9C4A9;background:transparent;color:var(--wine);
+  }
+  .tools button.solid{border-color:var(--wine);background:var(--wine);color:#F7EFE4}
+  .tools .count{margin-left:auto;font-size:12px;color:var(--sub);font-variant-numeric:tabular-nums}
+  .tools .count b{color:var(--wine);font-size:13.5px}
 
-  .sec{padding:16px 14px 4px}
+  .sec{padding:14px 12px 2px}
   .sec h2{
     font-family:"Nanum Myeongjo",serif;
-    font-size:14px;margin:0 0 10px;color:var(--wine);
-    display:flex;align-items:baseline;gap:8px;
+    font-size:13.5px;margin:0 0 9px;color:var(--wine);
+    display:flex;align-items:baseline;gap:7px;
   }
-  .sec h2 small{font-family:inherit;font-size:11.5px;color:var(--sub);font-weight:400;letter-spacing:0}
+  .sec h2 i{font-style:normal;font-size:10px;color:var(--gold);letter-spacing:.08em;font-family:-apple-system,sans-serif}
+  .sec h2 small{font-family:inherit;font-size:11px;color:var(--sub);font-weight:400;margin-left:auto;letter-spacing:0}
 
-  ul.list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:8px}
+  ul.list{list-style:none;margin:0 0 4px;padding:0;display:flex;flex-direction:column;gap:7px}
 
   li.row{
     display:grid;
-    grid-template-columns:20px 58px 1fr auto;
+    grid-template-columns:21px 54px 1fr auto;
     align-items:center;gap:8px;
     background:var(--paper);
     border:1px solid var(--line);
-    border-radius:14px;
-    padding:9px 8px 9px 7px;
+    border-left:3px solid var(--line);
+    border-radius:13px;
+    padding:8px 8px 8px 6px;
     transition:border-color .15s, box-shadow .15s, background .15s;
   }
-  li.row.on{border-color:#C9A96E;box-shadow:0 2px 10px rgba(59,10,16,.08);background:#FFFCF6}
+  li.row.star{border-left-color:var(--gold);background:#FFFCF5}
+  li.row.on{border-color:#C9A96E;box-shadow:0 2px 10px rgba(59,10,16,.09);background:#FFFBF2}
+  li.row.soon{opacity:.93}
+  li.row.hide{display:none}
 
   .cb{
     appearance:none;-webkit-appearance:none;
-    width:22px;height:22px;margin:0;border-radius:7px;
+    width:21px;height:21px;margin:0;border-radius:7px;
     border:2px solid #C9B49B;background:#fff;cursor:pointer;
     position:relative;flex:none;
   }
   .cb:checked{background:var(--wine);border-color:var(--wine)}
   .cb:checked::after{
-    content:"";position:absolute;left:6px;top:2.5px;
+    content:"";position:absolute;left:5.5px;top:2px;
     width:6px;height:11px;border:solid #fff;border-width:0 2px 2px 0;
     transform:rotate(42deg);
   }
 
   .thumb{
-    width:58px;height:58px;border-radius:9px;overflow:hidden;flex:none;
+    width:54px;height:54px;border-radius:8px;overflow:hidden;flex:none;
     background:#fff;border:1px solid #EFE3D3;
     display:flex;align-items:center;justify-content:center;
   }
   .thumb img{width:100%;height:100%;object-fit:contain;display:block}
 
   .info{min-width:0}
-  .name{font-size:13.5px;font-weight:700;letter-spacing:-.01em;line-height:1.32;word-break:keep-all}
-  .meta{font-size:11px;color:var(--sub);margin-top:2px;line-height:1.32;word-break:keep-all}
-  .meta .tag{
-    display:inline-block;margin-right:4px;padding:1px 6px;border-radius:5px;
-    background:#F3E4D2;color:#8C5A2B;font-size:10.5px;font-weight:700;vertical-align:1px;
+  .name{
+    font-size:13px;font-weight:700;letter-spacing:-.01em;line-height:1.3;
+    word-break:keep-all;display:flex;align-items:flex-start;gap:4px;
   }
-  .price{font-size:12.5px;color:var(--wine);font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums}
+  .name .st{color:#A8781F;font-size:13px;line-height:1.25;flex:none}
+  .name span.t{min-width:0}
+  .meta{font-size:10.5px;color:var(--sub);margin-top:2px;line-height:1.32;word-break:keep-all}
+  .meta .tag{
+    display:inline-block;margin-right:3px;padding:0 5px;border-radius:4px;
+    background:#F3E4D2;color:#8C5A2B;font-size:10px;font-weight:700;vertical-align:1px;
+  }
+  .meta .tag.limit{background:#EAD6DA;color:#8A2436}
+  .meta .tag.soon{background:#DDE4EA;color:#3B5568}
+  .meta .tag.gift{background:#DCE9DF;color:#2E6B4F}
+  .price{font-size:12px;color:var(--wine);font-weight:800;margin-top:3px;font-variant-numeric:tabular-nums}
   .price.free{color:var(--ok)}
-  .price .each{color:var(--sub);font-weight:600;margin-left:4px;font-size:11px}
+  .price .each{color:var(--sub);font-weight:600;margin-left:3px;font-size:10.5px}
 
-  .qty{display:none;align-items:center;gap:0;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
+  .qty{display:none;align-items:center;border:1px solid var(--line);border-radius:999px;overflow:hidden;background:#fff}
   li.row.on .qty{display:flex}
   .qty button{
-    width:26px;height:28px;border:0;background:#fff;color:var(--wine);
-    font-size:16px;line-height:1;font-weight:600;cursor:pointer;padding:0;
+    width:24px;height:26px;border:0;background:#fff;color:var(--wine);
+    font-size:15px;line-height:1;font-weight:600;cursor:pointer;padding:0;
   }
   .qty button:disabled{color:#CDBDAF}
-  .qty .n{min-width:16px;text-align:center;font-size:12.5px;font-weight:700;font-variant-numeric:tabular-nums}
-
-  details.more{margin-top:14px;border:1px solid var(--line);border-radius:14px;background:#FBF5EB;overflow:hidden}
-  details.more summary{
-    list-style:none;cursor:pointer;padding:13px 14px;font-size:13.5px;font-weight:700;color:var(--wine);
-    display:flex;align-items:center;gap:8px;
-  }
-  details.more summary::-webkit-details-marker{display:none}
-  details.more summary .arrow{margin-left:auto;transition:transform .2s;color:var(--gold)}
-  details.more[open] summary .arrow{transform:rotate(180deg)}
-  details.more .inner{padding:0 10px 12px}
-  details.more .hintline{font-size:11.5px;color:var(--sub);padding:0 4px 8px}
+  .qty .n{min-width:14px;text-align:center;font-size:12px;font-weight:700;font-variant-numeric:tabular-nums}
 
   .note{
-    margin:18px 14px 0;padding:12px 14px;border-radius:12px;
-    background:#F2E7D7;color:#6F5343;font-size:11.5px;line-height:1.55;
+    margin:14px 12px 0;padding:11px 13px;border-radius:12px;
+    background:#F2E7D7;color:#6F5343;font-size:11px;line-height:1.6;
   }
   .note b{color:var(--wine)}
-  footer{text-align:center;font-size:11px;color:#A4907F;padding:18px 0 8px}
+  .note .h{display:block;font-size:11.5px;color:var(--wine);font-weight:700;margin-bottom:3px}
+  footer{text-align:center;font-size:10.5px;color:#A4907F;padding:16px 0 6px}
 
-  /* sticky bottom bar */
   .bar{
     position:fixed;left:0;right:0;bottom:0;z-index:30;
     background:linear-gradient(180deg,#3B0A10 0%,#2C060B 100%);
-    color:#F6EADA;
-    border-top:2px solid var(--gold);
-    padding:9px 14px calc(10px + env(safe-area-inset-bottom));
+    color:#F6EADA;border-top:2px solid var(--gold);
+    padding:8px 13px calc(9px + env(safe-area-inset-bottom));
     box-shadow:0 -6px 22px rgba(59,10,16,.28);
   }
   .bar .inner{max-width:430px;margin:0 auto}
-  .pills{display:flex;gap:6px;margin-bottom:7px}
+  .pills{display:flex;gap:5px;margin-bottom:6px}
   .pill{
-    flex:1;text-align:center;font-size:10.5px;font-weight:700;letter-spacing:-.01em;
-    padding:4px 2px;border-radius:8px;
+    flex:1;text-align:center;font-size:10px;font-weight:700;letter-spacing:-.01em;
+    padding:4px 1px;border-radius:8px;
     border:1px solid rgba(227,200,143,.28);color:#B9A38C;background:rgba(255,255,255,.04);
     white-space:nowrap;overflow:hidden;text-overflow:ellipsis;
   }
-  .pill.on{
-    background:linear-gradient(180deg,#8E6B2C,#6E4F1C);border-color:#D8B570;color:#FFF3DC;
-  }
+  .pill.on{background:linear-gradient(180deg,#8E6B2C,#6E4F1C);border-color:#D8B570;color:#FFF3DC}
   .pill.on::after{content:" ✓"}
-  .totals{display:flex;align-items:baseline;gap:8px}
-  .totals .cnt{font-size:12px;color:#C9B49B;white-space:nowrap}
-  .totals .label{font-size:12px;color:#C9B49B}
+  .totals{display:flex;align-items:baseline;gap:7px}
+  .totals .cnt{font-size:11.5px;color:#C9B49B;white-space:nowrap}
+  .totals .label{font-size:11.5px;color:#C9B49B}
   .totals .sum{
-    margin-left:auto;font-size:23px;font-weight:800;letter-spacing:-.02em;
+    margin-left:auto;font-size:22px;font-weight:800;letter-spacing:-.02em;
     font-variant-numeric:tabular-nums;color:#FFF6E6;
   }
-  .totals .sum small{font-size:13px;font-weight:700;margin-left:1px;color:#E9CFA3}
-  .hint{margin-top:4px;font-size:11px;color:#B59E88;font-variant-numeric:tabular-nums}
+  .totals .sum small{font-size:12.5px;font-weight:700;margin-left:1px;color:#E9CFA3}
+  .hint{margin-top:3px;font-size:10.5px;color:#B59E88;font-variant-numeric:tabular-nums;line-height:1.35}
   .hint b{color:#E7C88E}
 </style>
 </head>
@@ -193,39 +198,36 @@
     <h1>상수리나무 아래 <em>×</em> 잊혀진 들판</h1>
     <div class="where"><b>11.19(목) 16:30</b> · 13회차 · 더현대서울 5F 에픽서울</div>
     <div class="plan">
-      <span>구매 예정 11종 <b>500,400원</b></span>
-      <span>예약번호 1407658417</span>
+      <span class="star">★ 살 것 <b>11종 500,400원</b></span>
+      <span>전체 <b>34종</b></span>
+      <span>예약 1407658417</span>
     </div>
   </header>
 
   <div class="toolbar">
-    <button id="all" type="button">전체 선택</button>
-    <button id="reset" class="ghost" type="button">초기화</button>
-    <div class="count"><b id="cnt">0</b> / <span id="cntAll">15</span>종</div>
-  </div>
-
-  <div class="sec">
-    <h2>살 품목 <small>11종 · 500,400원</small></h2>
-    <ul class="list" id="mainList"></ul>
-
-    <details class="more" id="more">
-      <summary>추가 MD 4종 <span class="arrow">▾</span></summary>
-      <div class="inner">
-        <div class="hintline">같이 볼 만한 품목 — 체크하면 합계에 더해져요.</div>
-        <ul class="list" id="extraList"></ul>
-      </div>
-    </details>
-
-    <div class="note">
-      <b>현장 메모</b><br>
-      · 엽서류만 사면 외전 미니북 사은품 조건에서 빠져요.<br>
-      · 목걸이 2종은 일별 한정·인당 최대 2개, 그 외 품목은 옵션당 최대 10개.<br>
-      · 검 금속 젤펜·리프탄&amp;맥시 액자 배지·바르카스&amp;탈리아 액자 배지는 2주차부터 판매.<br>
-      · 포토이즘은 카드 결제만 됩니다.
+    <div class="seg">
+      <button type="button" data-filter="all" class="on">전체 34종</button>
+      <button type="button" data-filter="star">★ 살 것만 11종</button>
     </div>
-
-    <footer>2026.11.19 · 유봄 님 현장용 체크리스트 · v1</footer>
+    <div class="tools">
+      <button type="button" id="starAll" class="solid">★ 일괄 선택</button>
+      <button type="button" id="reset">초기화</button>
+      <div class="count"><b id="cntAll">0</b> / 34종</div>
+    </div>
   </div>
+
+  <div id="sections"></div>
+
+  <div class="note">
+    <span class="h">현장 메모 · 공식 공지 기준</span>
+    · <b>2주차 품목</b>(기사의 검 젤펜·액자 배지 2종 세트)은 <b>11/26부터</b> 판매 — 첫날엔 없어요.<br>
+    · 엽서류(일러스트·다이오라마 엽서)만 사면 외전 미니북 사은품 조건에서 빠져요.<br>
+    · 목걸이 2종은 일별 한정·<b>인당 최대 2개</b>, 그 외는 옵션당 최대 10개.<br>
+    · 사은품: 5만원↑ 전시 포스터 1매 / 15만원↑ PVC 책갈피 3종 중 1종 + 카카오페이지 1만원권(선착순).<br>
+    · 포토이즘은 카드 결제만 됩니다.
+  </div>
+
+  <footer>2026.11.19 · 유봄 님 현장용 체크리스트 · 공식 MD 34종 전체 · v2</footer>
 </div>
 
 <div class="bar">
@@ -247,141 +249,192 @@
 <script>
 (function(){
   var IMG = "img/";
-  var items = [
-    {id:"books",   name:"잊혀진 들판 단행본 1·2·3권", price:48000, meta:"각 16,000원 × 3", tag:"단행본", img:"books.jpg", group:"main"},
-    {id:"minibook",name:"특별 외전 미니북 3권", price:0, meta:"사전예약 + MD 1종↑ 구매 시 전권", tag:"사은품", img:"minibook.jpg", group:"main"},
-    {id:"goblet",  name:"고블릿잔", price:59900, meta:"69×130mm", img:"goblet.jpg", group:"main"},
-    {id:"comb",    name:"맥시밀리언 머리빗 세트", price:24900, meta:"120×52mm · 파우치 포함", img:"comb.jpg", group:"main"},
-    {id:"necklace_oak", name:"상수리나무 아래 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", img:"necklace_oak.jpg", group:"main"},
-    {id:"diffuser",name:"전시 시그니처 디퓨저", price:18000, meta:"50mL", img:"diffuser.jpg", group:"main"},
-    {id:"map",     name:"로비텐 세계관 맵", price:29900, meta:"1124.8×190mm", img:"map.jpg", group:"main"},
-    {id:"jewelbox",name:"탈리아 보석함", price:75900, meta:"188×132×85mm · 단추 증정", img:"jewelbox.jpg", group:"main"},
-    {id:"squeezer",name:"로엠 기사단 단추 스퀴저", price:8000, meta:"파우치 포함", img:"squeezer.jpg", group:"main"},
-    {id:"diary",   name:"탈리아 일기장", price:23900, meta:"138×183mm", img:"diary.jpg", group:"main"},
-    {id:"khan",    name:"아기 칸 봉제 인형 키링", price:22900, meta:"80×110mm", img:"khan.jpg", group:"main"},
 
-    {id:"necklace_field", name:"잊혀진 들판 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", img:"necklace_field.jpg", group:"extra"},
-    {id:"calendar",name:"탁상 달력 2027", price:22900, meta:"명대사 일러스트 12장 + 생일 표기", img:"calendar.jpg", group:"extra"},
-    {id:"postcards",name:"일러스트 엽서 1·2·3권", price:5500, meta:"각 5,500원 · 엽서류는 사은품 제외", img:"postcards.jpg", group:"extra"},
-    {id:"bag",     name:"전시 쇼핑백", price:1000, meta:"315×400×120mm", img:"bag.jpg", group:"extra"}
+  var SECTIONS = [
+    {id:"book",  name:"도서 · 지류",        en:"BOOKS &amp; PAPER"},
+    {id:"jewel", name:"주얼리 · 액세서리",  en:"JEWELRY"},
+    {id:"living",name:"리빙 · 소품",        en:"LIVING"},
+    {id:"misc",  name:"키링 · 문구 · 기타", en:"KEYRING &amp; ETC"}
   ];
 
-  var KEY = "sangsuri-checklist-2026-11-19-v1";
+  // ★ = 유봄 님이 산다고 한 11종
+  var items = [
+    // ── 도서·지류
+    {id:"books", sec:"book", star:1, name:"잊혀진 들판 단행본 1·2·3권", price:48000, meta:"각 16,000원 × 3권", tag:"단행본", img:"books.jpg"},
+    {id:"minibook", sec:"book", star:1, name:"특별 외전 미니북 3권", price:0, meta:"사전예약 + 엽서 외 MD 1종↑ 구매 시 전권", tag:"사은품", tagcls:"gift", img:"minibook.jpg"},
+    {id:"diary", sec:"book", star:1, name:"탈리아 일기장", price:23900, meta:"138×183mm", img:"diary.jpg"},
+    {id:"map", sec:"book", star:1, name:"로비텐 세계관 맵", price:29900, meta:"1124.8×190mm", img:"map.jpg"},
+    {id:"calendar", sec:"book", star:0, name:"탁상 달력 2027", price:22900, meta:"명대사 일러스트 12장 + 생일 표기", img:"calendar.jpg"},
+    {id:"postcards_field", sec:"book", star:0, name:"잊혀진 들판 일러스트 엽서 1·2·3권", price:16500, meta:"각 5,500원 × 3권", tag:"엽서", tagcls:"limit", img:"postcards_field.jpg"},
+    {id:"postcards_oak", sec:"book", star:0, name:"상수리나무 아래 일러스트 엽서 3종", price:13500, meta:"각 4,500원 × 3종", tag:"엽서", tagcls:"limit", img:"postcards_oak.jpg"},
+    {id:"diorama_field", sec:"book", star:0, name:"다이오라마 입체 엽서 · 잊혀진 들판", price:14000, meta:"펼침형 입체 엽서", img:"diorama_field.jpg"},
+    {id:"diorama_oak", sec:"book", star:0, name:"다이오라마 입체 엽서 · 상수리나무 아래", price:14000, meta:"펼침형 입체 엽서", img:"diorama_oak.jpg"},
+    {id:"poster_field", sec:"book", star:0, name:"페브릭 포스터 · 잊혀진 들판", price:15900, meta:"패브릭 포스터", img:"poster_field.jpg"},
+    {id:"poster_oak", sec:"book", star:0, name:"페브릭 포스터 · 상수리나무 아래", price:15900, meta:"패브릭 포스터", img:"poster_oak.jpg"},
+    {id:"letter_oath", sec:"book", star:0, name:"편지지 세트 · 서약문", price:6500, meta:"편지지 + 봉투 세트", img:"letter_oath.jpg"},
+    {id:"letter_snow", sec:"book", star:0, name:"편지지 세트 · 설화", price:6500, meta:"편지지 + 봉투 세트", img:"letter_snow.jpg"},
+    {id:"bm_oak", sec:"book", star:0, name:"리본 모빌 북마크 · 상수리나무", price:12000, meta:"리본 모빌 북마크", img:"bm_oak.jpg"},
+    {id:"bm_flower", sec:"book", star:0, name:"리본 모빌 북마크 · 화관", price:12000, meta:"리본 모빌 북마크", img:"bm_flower.jpg"},
+
+    // ── 주얼리·액세서리
+    {id:"necklace_oak", sec:"jewel", star:1, name:"상수리나무 아래 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", tagcls:"limit", img:"necklace_oak.jpg", max:2},
+    {id:"necklace_field", sec:"jewel", star:0, name:"잊혀진 들판 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", tagcls:"limit", img:"necklace_field.jpg", max:2},
+    {id:"keychain_field", sec:"jewel", star:0, name:"액자 금속 키체인 · 잊혀진 들판", price:19000, meta:"액자형 금속 키체인", img:"keychain_field.jpg"},
+    {id:"keychain_oak", sec:"jewel", star:0, name:"액자 금속 키체인 · 상수리나무 아래", price:19000, meta:"액자형 금속 키체인", img:"keychain_oak.jpg"},
+    {id:"badge_field", sec:"jewel", star:0, name:"액자 배지 2종 세트 · 잊혀진 들판", price:19000, meta:"11/19 미판매 · 11/26부터", tag:"2주차", tagcls:"soon", img:"badge_field.jpg", soon:1},
+    {id:"badge_oak", sec:"jewel", star:0, name:"액자 배지 2종 세트 · 상수리나무 아래", price:19000, meta:"11/19 미판매 · 11/26부터", tag:"2주차", tagcls:"soon", img:"badge_oak.jpg", soon:1},
+    {id:"leather_keyring", sec:"jewel", star:0, name:"수납 가죽 키링", price:14900, meta:"가죽 키링", img:"leather_keyring.jpg"},
+
+    // ── 리빙·소품
+    {id:"goblet", sec:"living", star:1, name:"고블릿잔", price:59900, meta:"69×130mm", img:"goblet.jpg"},
+    {id:"comb", sec:"living", star:1, name:"맥시밀리언 머리빗 세트", price:24900, meta:"120×52mm · 파우치 포함", img:"comb.jpg"},
+    {id:"jewelbox", sec:"living", star:1, name:"탈리아 보석함", price:75900, meta:"188×132×85mm · 단추 증정", img:"jewelbox.jpg"},
+    {id:"diffuser", sec:"living", star:1, name:"전시 시그니처 디퓨저", price:18000, meta:"50mL", img:"diffuser.jpg"},
+    {id:"squeezer", sec:"living", star:1, name:"로엠 기사단 단추 스퀴저", price:8000, meta:"파우치 포함", img:"squeezer.jpg"},
+    {id:"cream_varkas", sec:"living", star:0, name:"바르카스 핸드크림", price:12000, meta:"핸드크림", img:"cream_varkas.jpg"},
+    {id:"cream_talia", sec:"living", star:0, name:"탈리아 핸드크림", price:12000, meta:"핸드크림", img:"cream_talia.jpg"},
+    {id:"bag", sec:"living", star:0, name:"전시 쇼핑백", price:1000, meta:"315×400×120mm", img:"bag.jpg"},
+
+    // ── 키링·문구·기타
+    {id:"khan", sec:"misc", star:1, name:"아기 칸 봉제 인형 키링", price:22900, meta:"80×110mm", img:"khan.jpg"},
+    {id:"pen", sec:"misc", star:0, name:"기사의 검 금속 젤펜", price:26900, meta:"11/19 미판매 · 11/26부터", tag:"2주차", tagcls:"soon", img:"pen.jpg", soon:1},
+    {id:"sticker_field", sec:"misc", star:0, name:"투명 조각 스티커 세트 · 잊혀진 들판", price:12000, meta:"투명 조각 스티커", img:"sticker_field.jpg"},
+    {id:"sticker_oak", sec:"misc", star:0, name:"투명 조각 스티커 세트 · 상수리나무 아래", price:12000, meta:"투명 조각 스티커", img:"sticker_oak.jpg"}
+  ];
+
+  var KEY = "sangsuri-checklist-2026-11-19-v2";
   var state = {};
   try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }
 
+  var TOTAL_N = items.length;
+  var STAR_N  = items.filter(function(i){return i.star;}).length;
+  var MAX_DEF = 10;
+  var filter = "all";
+
   function won(n){ return n.toLocaleString("ko-KR"); }
   function byId(id){ return document.getElementById(id); }
-  var MAX = 10;
+  function qtyOf(it){ return state[it.id] || 0; }
 
   function rowHTML(it){
-    var q = state[it.id] || 0;
-    var checked = q > 0;
+    var q = qtyOf(it);
+    var max = it.max || MAX_DEF;
+    var cls = "row";
+    if(it.star) cls += " star";
+    if(q > 0)   cls += " on";
+    if(it.soon) cls += " soon";
     var priceLine = it.price === 0
       ? '<div class="price free">0원</div>'
       : '<div class="price">' + won(it.price) + '원</div>';
     return '' +
-      '<li class="row' + (checked ? ' on' : '') + '" data-id="' + it.id + '">' +
-        '<input class="cb" type="checkbox" id="cb-' + it.id + '"' + (checked ? ' checked' : '') + ' aria-label="' + it.name + '">' +
+      '<li class="' + cls + '" data-id="' + it.id + '"' + (it.star ? '' : ' data-star="0"') + '>' +
+        '<input class="cb" type="checkbox" id="cb-' + it.id + '"' + (q > 0 ? ' checked' : '') + ' aria-label="' + it.name + '">' +
         '<label class="thumb" for="cb-' + it.id + '">' +
           '<img src="' + IMG + it.img + '" alt="' + it.name + ' 공식 굿즈 이미지" loading="lazy">' +
         '</label>' +
         '<div class="info">' +
-          '<div class="name">' + it.name + '</div>' +
-          '<div class="meta">' + (it.tag ? '<span class="tag">' + it.tag + '</span>' : '') + it.meta + '</div>' +
+          '<div class="name">' + (it.star ? '<span class="st">★</span>' : '') + '<span class="t">' + it.name + '</span></div>' +
+          '<div class="meta">' + (it.tag ? '<span class="tag ' + (it.tagcls||'') + '">' + it.tag + '</span>' : '') + it.meta + '</div>' +
           priceLine +
         '</div>' +
         '<div class="qty">' +
-          '<button type="button" data-act="dec">−</button>' +
+          '<button type="button" data-act="dec" aria-label="수량 줄이기">−</button>' +
           '<span class="n">' + (q || 1) + '</span>' +
-          '<button type="button" data-act="inc">＋</button>' +
+          '<button type="button" data-act="inc" aria-label="수량 늘리기">＋</button>' +
         '</div>' +
       '</li>';
   }
 
-  var main = items.filter(function(i){return i.group==="main";});
-  var extra = items.filter(function(i){return i.group==="extra";});
-  byId("mainList").innerHTML = main.map(rowHTML).join("");
-  byId("extraList").innerHTML = extra.map(rowHTML).join("");
-  byId("cntAll").textContent = main.length;
-
-  function total(){
-    var sum = 0, n = 0;
-    items.forEach(function(it){
-      var q = state[it.id] || 0;
-      if(q > 0){ sum += it.price * q; n++; }
-    });
-    return {sum: sum, n: n};
-  }
+  var html = "";
+  SECTIONS.forEach(function(s){
+    var list = items.filter(function(i){return i.sec === s.id;});
+    html += '<div class="sec" data-sec="' + s.id + '">' +
+      '<h2><i>' + s.en + '</i>' + s.name + '<small>' + list.length + '종</small></h2>' +
+      '<ul class="list">' + list.map(rowHTML).join("") + '</ul></div>';
+  });
+  byId("sections").innerHTML = html;
 
   function save(){
     try { localStorage.setItem(KEY, JSON.stringify(state)); } catch(e){}
   }
 
+  function applyFilter(){
+    document.querySelectorAll('.sec').forEach(function(sec){
+      var rows = sec.querySelectorAll('li.row');
+      var vis = 0;
+      rows.forEach(function(li){
+        var hide = false;
+        if(filter === "star" && li.getAttribute('data-star') === '0') hide = true;
+        li.classList.toggle('hide', hide);
+        if(!hide) vis++;
+      });
+      sec.style.display = vis ? '' : 'none';
+    });
+  }
+
   function render(){
-    var sum = 0, n = 0;
+    var sum = 0, n = 0, soonN = 0;
     items.forEach(function(it){
-      var q = state[it.id] || 0;
+      var q = qtyOf(it);
       var li = document.querySelector('li.row[data-id="' + it.id + '"]');
-      if(!li) return;
-      var cb = li.querySelector(".cb");
-      cb.checked = q > 0;
-      li.classList.toggle("on", q > 0);
-      li.querySelector(".qty .n").textContent = q || 1;
-      li.querySelector('[data-act="dec"]').disabled = (q <= 1);
-      li.querySelector('[data-act="inc"]').disabled = (q >= MAX);
-      if(q > 0){ sum += it.price * q; n++; }
+      if(li){
+        var cb = li.querySelector('.cb');
+        cb.checked = q > 0;
+        li.classList.toggle('on', q > 0);
+        li.querySelector('.qty .n').textContent = q || 1;
+        var max = it.max || MAX_DEF;
+        li.querySelector('[data-act="dec"]').disabled = (q <= 1);
+        li.querySelector('[data-act="inc"]').disabled = (q >= max);
+      }
+      if(q > 0){
+        sum += it.price * q;
+        n++;
+        if(it.soon) soonN++;
+      }
     });
 
-    var nMain = main.filter(function(it){ return (state[it.id] || 0) > 0; }).length;
     byId("sum").textContent = won(sum);
-    byId("cnt").textContent = nMain;
     byId("cnt2").textContent = n;
+    var nStar = items.filter(function(it){ return it.star && qtyOf(it) > 0; }).length;
+    byId("cntAll").textContent = nStar + "/" + STAR_N;
 
-    // 사은품 조건: 엽서류·미니북 제외 MD 1종 이상
-    var hasMd = items.some(function(it){
-      return (state[it.id] || 0) > 0 && it.id !== "minibook" && it.id !== "postcards";
-    });
+    // 외전 미니북: 엽서류(일러스트·다이오라마 엽서) 제외 MD 1종 이상
+    var EXC = {minibook:1, postcards_field:1, postcards_oak:1, diorama_field:1, diorama_oak:1};
+    var hasMd = items.some(function(it){ return qtyOf(it) > 0 && !EXC[it.id]; });
     byId("pillBook").classList.toggle("on", hasMd);
     byId("pill50").classList.toggle("on", sum >= 50000);
     byId("pill150").classList.toggle("on", sum >= 150000);
 
     var hint;
-    if(sum === 0){
-      hint = "항목을 체크하면 합계와 사은품 달성 여부가 바로 계산돼요";
+    if(n === 0){
+      hint = "항목을 누르면 합계·사은품 달성 여부가 바로 계산돼요";
       byId("hint").innerHTML = hint;
-      save();
-      return;
+      save(); applyFilter(); return;
     }
     if(sum >= 150000){
-      hint = "15만원 사은품 달성 — 포스터·PVC 책갈피·카카오페이지 1만원권";
+      hint = "15만원 달성 — 포스터 + PVC 책갈피 + 카카오페이지 1만원권";
     } else if(sum >= 50000){
-      hint = "5만원 사은품 달성 · 15만원까지 <b>" + won(150000 - sum) + "원</b> 남음";
+      hint = "5만원 달성 · 15만원까지 <b>" + won(150000 - sum) + "원</b> 남음";
     } else {
       hint = "5만원까지 <b>" + won(50000 - sum) + "원</b> 남음";
     }
-    if(!hasMd){ hint += " · 외전 미니북은 엽서 외 MD 1종 필요"; }
+    if(!hasMd){ hint += " · 미니북은 엽서 외 MD 1종 필요"; }
+    if(soonN){ hint += " · 2주차 " + soonN + "종 포함"; }
     byId("hint").innerHTML = hint;
 
-    // 추가 MD가 하나라도 선택되면 섹션을 펼쳐 합계와 목록이 어긋나 보이지 않게
-    var extraOn = extra.some(function(it){ return (state[it.id] || 0) > 0; });
-    if(extraOn){ byId("more").open = true; }
-
-    save();
+    save(); applyFilter();
   }
 
   document.addEventListener("change", function(e){
     var cb = e.target.closest(".cb");
     if(!cb) return;
-    var li = cb.closest("li.row");
-    var id = li.getAttribute("data-id");
+    var lir = cb.closest("li.row");
+    var id = lir.getAttribute("data-id");
     if(cb.checked){ state[id] = state[id] || 1; }
     else { delete state[id]; }
     render();
   });
 
   document.addEventListener("click", function(e){
-    // 이름·설명 영역을 눌러도 체크되도록
     var info = e.target.closest("li.row .info");
     if(info){
       var row = info.closest("li.row");
@@ -395,22 +448,35 @@
     e.preventDefault(); e.stopPropagation();
     var li = btn.closest("li.row");
     var id = li.getAttribute("data-id");
+    var it = items.filter(function(x){return x.id === id;})[0];
+    var max = (it && it.max) || MAX_DEF;
     var q = state[id] || 0;
-    if(btn.getAttribute("data-act") === "inc"){ state[id] = Math.min(MAX, q + 1); }
+    if(btn.getAttribute("data-act") === "inc"){ state[id] = Math.min(max, q + 1); }
     else { state[id] = Math.max(1, q - 1); }
     render();
   });
 
-  byId("all").addEventListener("click", function(){
-    var allOn = items.every(function(it){ return (state[it.id] || 0) > 0; });
-    if(allOn){ state = {}; }
-    else { items.forEach(function(it){ state[it.id] = state[it.id] || 1; }); }
+  byId("starAll").addEventListener("click", function(){
+    var allOn = items.every(function(it){ return !it.star || qtyOf(it) > 0; });
+    if(allOn){
+      items.forEach(function(it){ if(it.star) delete state[it.id]; });
+    } else {
+      items.forEach(function(it){ if(it.star) state[it.id] = state[it.id] || 1; });
+    }
     render();
   });
 
   byId("reset").addEventListener("click", function(){
     state = {};
     render();
+  });
+
+  document.querySelectorAll('.seg button').forEach(function(b){
+    b.addEventListener("click", function(){
+      filter = b.getAttribute("data-filter");
+      document.querySelectorAll('.seg button').forEach(function(x){ x.classList.toggle('on', x === b); });
+      applyFilter();
+    });
   });
 
   render();
