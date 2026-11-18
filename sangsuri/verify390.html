@@ -6,9 +6,6 @@ iframe{width:390px;border:0;background:#fff}</style></head>
 <script>
 var p=new URLSearchParams(location.search), h=+(p.get('h')||844), y=+(p.get('y')||0), f=document.getElementById('f');
 f.style.height=h+'px';
-f.addEventListener('load',function(){
-  f.src='./index.html?t='+Date.now();
-});
 f.src='./index.html?t='+Date.now();
 var tries=0, iv=setInterval(function(){
   try{ f.contentWindow.scrollTo(0,y); }catch(e){}
