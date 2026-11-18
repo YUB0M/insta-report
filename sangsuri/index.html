@@ -356,6 +356,10 @@
     if(!hasMd){ hint += " · 외전 미니북은 엽서 외 MD 1종 필요"; }
     byId("hint").innerHTML = hint;
 
+    // 추가 MD가 하나라도 선택되면 섹션을 펼쳐 합계와 목록이 어긋나 보이지 않게
+    var extraOn = extra.some(function(it){ return (state[it.id] || 0) > 0; });
+    if(extraOn){ byId("more").open = true; }
+
     save();
   }
 
