@@ -4,7 +4,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#3B0A10">
-<title>상수리 굿즈 체크리스트 · 11.19 더현대</title>
+<meta name="description" content="상수리나무 아래 × 잊혀진 들판 더현대서울 팝업 공식 굿즈 34종 체크리스트 — 체크하면 합계와 사은품 달성 여부가 바로 계산됩니다.">
+<title>상수리 굿즈 체크리스트 · 더현대서울</title>
 <style>
   :root{
     --wine:#3B0A10;
@@ -47,13 +48,6 @@
   header h1 em{font-style:normal;color:#E3C88F}
   header .where{font-size:12.5px;color:#DCC7AE}
   header .where b{color:#F4E7D6;font-weight:600}
-  header .plan{margin-top:11px;display:flex;gap:6px;flex-wrap:wrap;font-size:11.5px;color:#EBDCC8}
-  header .plan span{
-    background:rgba(255,255,255,.09);border:1px solid rgba(227,200,143,.35);
-    border-radius:999px;padding:4px 9px;
-  }
-  header .plan span b{color:#F2D9A0}
-  header .plan span.star{border-color:#E3C88F;background:rgba(216,181,112,.18)}
 
   .toolbar{
     position:sticky;top:0;z-index:20;
@@ -100,7 +94,6 @@
     padding:8px 8px 8px 6px;
     transition:border-color .15s, box-shadow .15s, background .15s;
   }
-  li.row.star{border-left-color:var(--gold);background:#FFFCF5}
   li.row.on{border-color:#C9A96E;box-shadow:0 2px 10px rgba(59,10,16,.09);background:#FFFBF2}
   li.row.soon{opacity:.93}
   li.row.hide{display:none}
@@ -128,10 +121,8 @@
   .info{min-width:0}
   .name{
     font-size:13px;font-weight:700;letter-spacing:-.01em;line-height:1.3;
-    word-break:keep-all;display:flex;align-items:flex-start;gap:4px;
+    word-break:keep-all;
   }
-  .name .st{color:#A8781F;font-size:13px;line-height:1.25;flex:none}
-  .name span.t{min-width:0}
   .meta{font-size:10.5px;color:var(--sub);margin-top:2px;line-height:1.32;word-break:keep-all}
   .meta .tag{
     display:inline-block;margin-right:3px;padding:0 5px;border-radius:4px;
@@ -159,7 +150,13 @@
   }
   .note b{color:var(--wine)}
   .note .h{display:block;font-size:11.5px;color:var(--wine);font-weight:700;margin-bottom:3px}
-  footer{text-align:center;font-size:10.5px;color:#A4907F;padding:16px 0 6px}
+
+  .empty{
+    margin:26px 12px;padding:24px 16px;border-radius:14px;text-align:center;
+    background:#FFFDF9;border:1px dashed #DCC9AF;color:var(--sub);font-size:12.5px;line-height:1.7;
+  }
+  .empty b{color:var(--wine)}
+  footer{text-align:center;font-size:10.5px;color:#A4907F;padding:16px 0 6px;line-height:1.7}
 
   .bar{
     position:fixed;left:0;right:0;bottom:0;z-index:30;
@@ -196,38 +193,39 @@
   <header>
     <div class="brand">Under One Canopy, Two Romances</div>
     <h1>상수리나무 아래 <em>×</em> 잊혀진 들판</h1>
-    <div class="where"><b>11.19(목) 16:30</b> · 13회차 · 더현대서울 5F 에픽서울</div>
-    <div class="plan">
-      <span class="star">★ 살 것 <b>11종 500,400원</b></span>
-      <span>전체 <b>34종</b></span>
-      <span>예약 1407658417</span>
-    </div>
+    <div class="where"><b>2026.11.19~12.03</b> · 더현대서울 5F 에픽서울</div>
   </header>
 
   <div class="toolbar">
     <div class="seg">
       <button type="button" data-filter="all" class="on">전체 34종</button>
-      <button type="button" data-filter="star">★ 살 것만 11종</button>
+      <button type="button" data-filter="picked">선택한 것만</button>
     </div>
     <div class="tools">
-      <button type="button" id="starAll" class="solid">★ 일괄 선택</button>
-      <button type="button" id="reset">초기화</button>
+      <button type="button" id="reset" class="solid">전체 초기화</button>
       <div class="count"><b id="cntAll">0</b> / 34종</div>
     </div>
   </div>
 
   <div id="sections"></div>
 
+  <div class="empty" id="empty" hidden>
+    아직 담은 품목이 없어요.<br><b>전체 34종</b>에서 살 것을 눌러 보세요.
+  </div>
+
   <div class="note">
     <span class="h">현장 메모 · 공식 공지 기준</span>
-    · <b>2주차 품목</b>(기사의 검 젤펜·액자 배지 2종 세트)은 <b>11/26부터</b> 판매 — 첫날엔 없어요.<br>
+    · <b>2주차 품목</b>(기사의 검 젤펜·액자 배지 2종 세트)은 <b>11/26부터</b> 판매 — 1주차(11/19~25)엔 없어요.<br>
     · 엽서류(일러스트·다이오라마 엽서)만 사면 외전 미니북 사은품 조건에서 빠져요.<br>
     · 목걸이 2종은 일별 한정·<b>인당 최대 2개</b>, 그 외는 옵션당 최대 10개.<br>
     · 사은품: 5만원↑ 전시 포스터 1매 / 15만원↑ PVC 책갈피 3종 중 1종 + 카카오페이지 1만원권(선착순).<br>
-    · 포토이즘은 카드 결제만 됩니다.
+    · 예약은 1인 1매·회차당 30분 관람, 현장에서 예약 확인 + 신분증이 필요해요. 포토이즘은 카드 결제만 됩니다.
   </div>
 
-  <footer>2026.11.19 · 유봄 님 현장용 체크리스트 · 공식 MD 34종 전체 · v2</footer>
+  <footer>
+    공식 MD 34종 전체 · 공용 체크리스트<br>
+    체크한 내용은 이 기기 브라우저에만 저장돼요 · v3
+  </footer>
 </div>
 
 <div class="bar">
@@ -257,57 +255,55 @@
     {id:"misc",  name:"키링 · 문구 · 기타", en:"KEYRING &amp; ETC"}
   ];
 
-  // ★ = 유봄 님이 산다고 한 11종
   var items = [
     // ── 도서·지류
-    {id:"books", sec:"book", star:1, name:"잊혀진 들판 단행본 1·2·3권", price:48000, meta:"각 16,000원 × 3권", tag:"단행본", img:"books.jpg"},
-    {id:"minibook", sec:"book", star:1, name:"특별 외전 미니북 3권", price:0, meta:"사전예약 + 엽서 외 MD 1종↑ 구매 시 전권", tag:"사은품", tagcls:"gift", img:"minibook.jpg"},
-    {id:"diary", sec:"book", star:1, name:"탈리아 일기장", price:23900, meta:"138×183mm", img:"diary.jpg"},
-    {id:"map", sec:"book", star:1, name:"로비텐 세계관 맵", price:29900, meta:"1124.8×190mm", img:"map.jpg"},
-    {id:"calendar", sec:"book", star:0, name:"탁상 달력 2027", price:22900, meta:"명대사 일러스트 12장 + 생일 표기", img:"calendar.jpg"},
-    {id:"postcards_field", sec:"book", star:0, name:"잊혀진 들판 일러스트 엽서 1·2·3권", price:16500, meta:"각 5,500원 × 3권", tag:"엽서", tagcls:"limit", img:"postcards_field.jpg"},
-    {id:"postcards_oak", sec:"book", star:0, name:"상수리나무 아래 일러스트 엽서 3종", price:13500, meta:"각 4,500원 × 3종", tag:"엽서", tagcls:"limit", img:"postcards_oak.jpg"},
-    {id:"diorama_field", sec:"book", star:0, name:"다이오라마 입체 엽서 · 잊혀진 들판", price:14000, meta:"펼침형 입체 엽서", img:"diorama_field.jpg"},
-    {id:"diorama_oak", sec:"book", star:0, name:"다이오라마 입체 엽서 · 상수리나무 아래", price:14000, meta:"펼침형 입체 엽서", img:"diorama_oak.jpg"},
-    {id:"poster_field", sec:"book", star:0, name:"페브릭 포스터 · 잊혀진 들판", price:15900, meta:"패브릭 포스터", img:"poster_field.jpg"},
-    {id:"poster_oak", sec:"book", star:0, name:"페브릭 포스터 · 상수리나무 아래", price:15900, meta:"패브릭 포스터", img:"poster_oak.jpg"},
-    {id:"letter_oath", sec:"book", star:0, name:"편지지 세트 · 서약문", price:6500, meta:"편지지 + 봉투 세트", img:"letter_oath.jpg"},
-    {id:"letter_snow", sec:"book", star:0, name:"편지지 세트 · 설화", price:6500, meta:"편지지 + 봉투 세트", img:"letter_snow.jpg"},
-    {id:"bm_oak", sec:"book", star:0, name:"리본 모빌 북마크 · 상수리나무", price:12000, meta:"리본 모빌 북마크", img:"bm_oak.jpg"},
-    {id:"bm_flower", sec:"book", star:0, name:"리본 모빌 북마크 · 화관", price:12000, meta:"리본 모빌 북마크", img:"bm_flower.jpg"},
+    {id:"books", sec:"book", name:"잊혀진 들판 단행본 1·2·3권", price:48000, meta:"각 16,000원 × 3권", tag:"단행본", img:"books.jpg"},
+    {id:"minibook", sec:"book", name:"특별 외전 미니북 3권", price:0, meta:"사전예약 + 엽서 외 MD 1종↑ 구매 시 전권", tag:"사은품", tagcls:"gift", img:"minibook.jpg"},
+    {id:"diary", sec:"book", name:"탈리아 일기장", price:23900, meta:"138×183mm", img:"diary.jpg"},
+    {id:"map", sec:"book", name:"로비텐 세계관 맵", price:29900, meta:"1124.8×190mm", img:"map.jpg"},
+    {id:"calendar", sec:"book", name:"탁상 달력 2027", price:22900, meta:"명대사 일러스트 12장 + 생일 표기", img:"calendar.jpg"},
+    {id:"postcards_field", sec:"book", name:"잊혀진 들판 일러스트 엽서 1·2·3권", price:16500, meta:"각 5,500원 × 3권", tag:"엽서", tagcls:"limit", img:"postcards_field.jpg"},
+    {id:"postcards_oak", sec:"book", name:"상수리나무 아래 일러스트 엽서 3종", price:13500, meta:"각 4,500원 × 3종", tag:"엽서", tagcls:"limit", img:"postcards_oak.jpg"},
+    {id:"diorama_field", sec:"book", name:"다이오라마 입체 엽서 · 잊혀진 들판", price:14000, meta:"펼침형 입체 엽서", img:"diorama_field.jpg"},
+    {id:"diorama_oak", sec:"book", name:"다이오라마 입체 엽서 · 상수리나무 아래", price:14000, meta:"펼침형 입체 엽서", img:"diorama_oak.jpg"},
+    {id:"poster_field", sec:"book", name:"페브릭 포스터 · 잊혀진 들판", price:15900, meta:"패브릭 포스터", img:"poster_field.jpg"},
+    {id:"poster_oak", sec:"book", name:"페브릭 포스터 · 상수리나무 아래", price:15900, meta:"패브릭 포스터", img:"poster_oak.jpg"},
+    {id:"letter_oath", sec:"book", name:"편지지 세트 · 서약문", price:6500, meta:"편지지 + 봉투 세트", img:"letter_oath.jpg"},
+    {id:"letter_snow", sec:"book", name:"편지지 세트 · 설화", price:6500, meta:"편지지 + 봉투 세트", img:"letter_snow.jpg"},
+    {id:"bm_oak", sec:"book", name:"리본 모빌 북마크 · 상수리나무", price:12000, meta:"리본 모빌 북마크", img:"bm_oak.jpg"},
+    {id:"bm_flower", sec:"book", name:"리본 모빌 북마크 · 화관", price:12000, meta:"리본 모빌 북마크", img:"bm_flower.jpg"},
 
     // ── 주얼리·액세서리
-    {id:"necklace_oak", sec:"jewel", star:1, name:"상수리나무 아래 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", tagcls:"limit", img:"necklace_oak.jpg", max:2},
-    {id:"necklace_field", sec:"jewel", star:0, name:"잊혀진 들판 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", tagcls:"limit", img:"necklace_field.jpg", max:2},
-    {id:"keychain_field", sec:"jewel", star:0, name:"액자 금속 키체인 · 잊혀진 들판", price:19000, meta:"액자형 금속 키체인", img:"keychain_field.jpg"},
-    {id:"keychain_oak", sec:"jewel", star:0, name:"액자 금속 키체인 · 상수리나무 아래", price:19000, meta:"액자형 금속 키체인", img:"keychain_oak.jpg"},
-    {id:"badge_field", sec:"jewel", star:0, name:"액자 배지 2종 세트 · 잊혀진 들판", price:19000, meta:"11/19 미판매 · 11/26부터", tag:"2주차", tagcls:"soon", img:"badge_field.jpg", soon:1},
-    {id:"badge_oak", sec:"jewel", star:0, name:"액자 배지 2종 세트 · 상수리나무 아래", price:19000, meta:"11/19 미판매 · 11/26부터", tag:"2주차", tagcls:"soon", img:"badge_oak.jpg", soon:1},
-    {id:"leather_keyring", sec:"jewel", star:0, name:"수납 가죽 키링", price:14900, meta:"가죽 키링", img:"leather_keyring.jpg"},
+    {id:"necklace_oak", sec:"jewel", name:"상수리나무 아래 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", tagcls:"limit", img:"necklace_oak.jpg", max:2},
+    {id:"necklace_field", sec:"jewel", name:"잊혀진 들판 × SCUDO 목걸이", price:189000, meta:"일별 한정 · 인당 최대 2개", tag:"한정", tagcls:"limit", img:"necklace_field.jpg", max:2},
+    {id:"keychain_field", sec:"jewel", name:"액자 금속 키체인 · 잊혀진 들판", price:19000, meta:"액자형 금속 키체인", img:"keychain_field.jpg"},
+    {id:"keychain_oak", sec:"jewel", name:"액자 금속 키체인 · 상수리나무 아래", price:19000, meta:"액자형 금속 키체인", img:"keychain_oak.jpg"},
+    {id:"badge_field", sec:"jewel", name:"액자 배지 2종 세트 · 잊혀진 들판", price:19000, meta:"11/19 미판매 · 11/26부터", tag:"2주차", tagcls:"soon", img:"badge_field.jpg", soon:1},
+    {id:"badge_oak", sec:"jewel", name:"액자 배지 2종 세트 · 상수리나무 아래", price:19000, meta:"11/19 미판매 · 11/26부터", tag:"2주차", tagcls:"soon", img:"badge_oak.jpg", soon:1},
+    {id:"leather_keyring", sec:"jewel", name:"수납 가죽 키링", price:14900, meta:"가죽 키링", img:"leather_keyring.jpg"},
 
     // ── 리빙·소품
-    {id:"goblet", sec:"living", star:1, name:"고블릿잔", price:59900, meta:"69×130mm", img:"goblet.jpg"},
-    {id:"comb", sec:"living", star:1, name:"맥시밀리언 머리빗 세트", price:24900, meta:"120×52mm · 파우치 포함", img:"comb.jpg"},
-    {id:"jewelbox", sec:"living", star:1, name:"탈리아 보석함", price:75900, meta:"188×132×85mm · 단추 증정", img:"jewelbox.jpg"},
-    {id:"diffuser", sec:"living", star:1, name:"전시 시그니처 디퓨저", price:18000, meta:"50mL", img:"diffuser.jpg"},
-    {id:"squeezer", sec:"living", star:1, name:"로엠 기사단 단추 스퀴저", price:8000, meta:"파우치 포함", img:"squeezer.jpg"},
-    {id:"cream_varkas", sec:"living", star:0, name:"바르카스 핸드크림", price:12000, meta:"핸드크림", img:"cream_varkas.jpg"},
-    {id:"cream_talia", sec:"living", star:0, name:"탈리아 핸드크림", price:12000, meta:"핸드크림", img:"cream_talia.jpg"},
-    {id:"bag", sec:"living", star:0, name:"전시 쇼핑백", price:1000, meta:"315×400×120mm", img:"bag.jpg"},
+    {id:"goblet", sec:"living", name:"고블릿잔", price:59900, meta:"69×130mm", img:"goblet.jpg"},
+    {id:"comb", sec:"living", name:"맥시밀리언 머리빗 세트", price:24900, meta:"120×52mm · 파우치 포함", img:"comb.jpg"},
+    {id:"jewelbox", sec:"living", name:"탈리아 보석함", price:75900, meta:"188×132×85mm · 단추 증정", img:"jewelbox.jpg"},
+    {id:"diffuser", sec:"living", name:"전시 시그니처 디퓨저", price:18000, meta:"50mL", img:"diffuser.jpg"},
+    {id:"squeezer", sec:"living", name:"로엠 기사단 단추 스퀴저", price:8000, meta:"파우치 포함", img:"squeezer.jpg"},
+    {id:"cream_varkas", sec:"living", name:"바르카스 핸드크림", price:12000, meta:"핸드크림", img:"cream_varkas.jpg"},
+    {id:"cream_talia", sec:"living", name:"탈리아 핸드크림", price:12000, meta:"핸드크림", img:"cream_talia.jpg"},
+    {id:"bag", sec:"living", name:"전시 쇼핑백", price:1000, meta:"315×400×120mm", img:"bag.jpg"},
 
     // ── 키링·문구·기타
-    {id:"khan", sec:"misc", star:1, name:"아기 칸 봉제 인형 키링", price:22900, meta:"80×110mm", img:"khan.jpg"},
-    {id:"pen", sec:"misc", star:0, name:"기사의 검 금속 젤펜", price:26900, meta:"11/19 미판매 · 11/26부터", tag:"2주차", tagcls:"soon", img:"pen.jpg", soon:1},
-    {id:"sticker_field", sec:"misc", star:0, name:"투명 조각 스티커 세트 · 잊혀진 들판", price:12000, meta:"투명 조각 스티커", img:"sticker_field.jpg"},
-    {id:"sticker_oak", sec:"misc", star:0, name:"투명 조각 스티커 세트 · 상수리나무 아래", price:12000, meta:"투명 조각 스티커", img:"sticker_oak.jpg"}
+    {id:"khan", sec:"misc", name:"아기 칸 봉제 인형 키링", price:22900, meta:"80×110mm", img:"khan.jpg"},
+    {id:"pen", sec:"misc", name:"기사의 검 금속 젤펜", price:26900, meta:"11/19 미판매 · 11/26부터", tag:"2주차", tagcls:"soon", img:"pen.jpg", soon:1},
+    {id:"sticker_field", sec:"misc", name:"투명 조각 스티커 세트 · 잊혀진 들판", price:12000, meta:"투명 조각 스티커", img:"sticker_field.jpg"},
+    {id:"sticker_oak", sec:"misc", name:"투명 조각 스티커 세트 · 상수리나무 아래", price:12000, meta:"투명 조각 스티커", img:"sticker_oak.jpg"}
   ];
 
-  var KEY = "sangsuri-checklist-2026-11-19-v2";
+  var KEY = "sangsuri-goods-checklist-common-v3";
   var state = {};
   try { state = JSON.parse(localStorage.getItem(KEY) || "{}") || {}; } catch(e){ state = {}; }
 
   var TOTAL_N = items.length;
-  var STAR_N  = items.filter(function(i){return i.star;}).length;
   var MAX_DEF = 10;
   var filter = "all";
 
@@ -317,22 +313,20 @@
 
   function rowHTML(it){
     var q = qtyOf(it);
-    var max = it.max || MAX_DEF;
     var cls = "row";
-    if(it.star) cls += " star";
     if(q > 0)   cls += " on";
     if(it.soon) cls += " soon";
     var priceLine = it.price === 0
       ? '<div class="price free">0원</div>'
       : '<div class="price">' + won(it.price) + '원</div>';
     return '' +
-      '<li class="' + cls + '" data-id="' + it.id + '"' + (it.star ? '' : ' data-star="0"') + '>' +
+      '<li class="' + cls + '" data-id="' + it.id + '">' +
         '<input class="cb" type="checkbox" id="cb-' + it.id + '"' + (q > 0 ? ' checked' : '') + ' aria-label="' + it.name + '">' +
         '<label class="thumb" for="cb-' + it.id + '">' +
           '<img src="' + IMG + it.img + '" alt="' + it.name + ' 공식 굿즈 이미지" loading="lazy">' +
         '</label>' +
         '<div class="info">' +
-          '<div class="name">' + (it.star ? '<span class="st">★</span>' : '') + '<span class="t">' + it.name + '</span></div>' +
+          '<div class="name">' + it.name + '</div>' +
           '<div class="meta">' + (it.tag ? '<span class="tag ' + (it.tagcls||'') + '">' + it.tag + '</span>' : '') + it.meta + '</div>' +
           priceLine +
         '</div>' +
@@ -358,17 +352,21 @@
   }
 
   function applyFilter(){
+    var picked = 0;
     document.querySelectorAll('.sec').forEach(function(sec){
       var rows = sec.querySelectorAll('li.row');
       var vis = 0;
       rows.forEach(function(li){
-        var hide = false;
-        if(filter === "star" && li.getAttribute('data-star') === '0') hide = true;
+        var id = li.getAttribute('data-id');
+        var isOn = (state[id] || 0) > 0;
+        if(isOn) picked++;
+        var hide = (filter === "picked" && !isOn);
         li.classList.toggle('hide', hide);
         if(!hide) vis++;
       });
       sec.style.display = vis ? '' : 'none';
     });
+    byId("empty").hidden = !(filter === "picked" && picked === 0);
   }
 
   function render(){
@@ -394,8 +392,7 @@
 
     byId("sum").textContent = won(sum);
     byId("cnt2").textContent = n;
-    var nStar = items.filter(function(it){ return it.star && qtyOf(it) > 0; }).length;
-    byId("cntAll").textContent = nStar + "/" + STAR_N;
+    byId("cntAll").textContent = n;
 
     // 외전 미니북: 엽서류(일러스트·다이오라마 엽서) 제외 MD 1종 이상
     var EXC = {minibook:1, postcards_field:1, postcards_oak:1, diorama_field:1, diorama_oak:1};
@@ -453,16 +450,6 @@
     var q = state[id] || 0;
     if(btn.getAttribute("data-act") === "inc"){ state[id] = Math.min(max, q + 1); }
     else { state[id] = Math.max(1, q - 1); }
-    render();
-  });
-
-  byId("starAll").addEventListener("click", function(){
-    var allOn = items.every(function(it){ return !it.star || qtyOf(it) > 0; });
-    if(allOn){
-      items.forEach(function(it){ if(it.star) delete state[it.id]; });
-    } else {
-      items.forEach(function(it){ if(it.star) state[it.id] = state[it.id] || 1; });
-    }
     render();
   });
 
