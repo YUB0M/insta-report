@@ -116,7 +116,7 @@
     margin-left:auto;font-size:10.5px;font-weight:600;color:#B0A08D;
     font-variant-numeric:tabular-nums;letter-spacing:.04em;
   }
-  .sec h2::after{content:"";order:2;flex:1 1 auto;height:1px;background:linear-gradient(90deg,rgba(232,222,204,.9),rgba(232,222,204,0))}
+  .sec h2::after{content:"";order:2;flex:1 1 auto;height:1px;background:linear-gradient(90deg,rgba(214,198,168,.95),rgba(214,198,168,.15))}
   .sec h2 .ko{order:1}
   .sec h2 .en{order:0}
   .sec h2 .n{order:3;margin-left:0}
@@ -133,6 +133,7 @@
     padding:12px 13px 11px 11px;
     box-shadow:0 1px 2px rgba(43,34,28,.035);
     transition:border-color .18s, box-shadow .18s, background .18s, transform .18s;
+    -webkit-user-select:none;user-select:none;
   }
   li.row.on{
     border-color:var(--gold-soft);
@@ -543,6 +544,20 @@
   });
 
   document.addEventListener("click", function(e){
+    var btn = e.target.closest(".qty button");
+    if(btn){
+      e.preventDefault(); e.stopPropagation();
+      var li = btn.closest("li.row");
+      var id = li.getAttribute("data-id");
+      var it = items.filter(function(x){return x.id === id;})[0];
+      var max = (it && it.max) || MAX_DEF;
+      var q = state[id] || 0;
+      if(q <= 0) return;
+      if(btn.getAttribute("data-act") === "inc"){ state[id] = Math.min(max, q + 1); }
+      else { state[id] = Math.max(1, q - 1); }
+      render();
+      return;
+    }
     var info = e.target.closest("li.row .info");
     if(info){
       var row = info.closest("li.row");
@@ -552,17 +567,6 @@
       box.dispatchEvent(new Event("change", {bubbles:true}));
       return;
     }
-    var btn = e.target.closest(".qty button");
-    if(!btn) return;
-    e.preventDefault(); e.stopPropagation();
-    var li = btn.closest("li.row");
-    var id = li.getAttribute("data-id");
-    var it = items.filter(function(x){return x.id === id;})[0];
-    var max = (it && it.max) || MAX_DEF;
-    var q = state[id] || 0;
-    if(btn.getAttribute("data-act") === "inc"){ state[id] = Math.min(max, q + 1); }
-    else { state[id] = Math.max(1, q - 1); }
-    render();
   });
 
   byId("reset").addEventListener("click", function(){
