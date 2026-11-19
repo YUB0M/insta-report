@@ -6,7 +6,7 @@ iframe{width:390px;border:0;background:#fff}</style></head>
 <script>
 var p=new URLSearchParams(location.search), h=+(p.get('h')||844), y=+(p.get('y')||0), f=document.getElementById('f');
 f.style.height=h+'px';
-f.src='./index.html?t='+Date.now();
+f.src=(p.get('p')||'./index.html')+'?t='+Date.now();
 var tries=0, iv=setInterval(function(){
   try{ f.contentWindow.scrollTo(0,y); }catch(e){}
   if(++tries>12) clearInterval(iv);
